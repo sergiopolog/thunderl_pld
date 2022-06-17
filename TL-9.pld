@@ -1,0 +1,55 @@
+Name TL-9 ;
+PartNo 00 ;
+Date 16/06/2022 ;
+Revision 01 ;
+Designer Recreativos Piscis [Sergio Galiano] ;
+Company Recreativos Piscis ;
+Assembly None ;
+Location Spain ;
+Device g16v8a ;
+
+/* ********** INPUT PINS ********** */
+PIN 1	= clk ;
+PIN 2	= i2 ;
+PIN 3	= i3 ;
+PIN 4	= i4 ;
+PIN 5	= i5 ;
+PIN 6	= i6 ;
+PIN 7	= i7 ;
+PIN 8	= i8 ;
+PIN 9	= i9 ;
+PIN 11	= oe ;
+
+/* ********** OUTPUT PINS ********* */
+PIN 12	= ro12 ;
+PIN 13	= ro13 ;
+PIN 14	= ro14 ;
+PIN 15	= ro15 ;
+PIN 16	= ro16 ;
+PIN 17	= ro17 ;
+PIN 18	= ro18 ;
+PIN 19	= ro19 ;
+
+/* ******** LOGIC EQUATIONS ******* */
+
+!ro12.d	= !i4 & i9
+			# !i7 & i9
+			# !i2 & i4 & i5 ;
+			
+!ro13.d	= !i4 & i9
+			# !i7 & i9 ;
+
+/* !ro14.d	= !i4 # !i7 ; */		
+ro14.d	= i4 & i7 ;
+
+/* !ro15.d	= !i3 # i6 # !i8 ; */
+ro15.d	= i3 & !i6 & i8;
+
+!ro16.d	= !i2 & i4 & i5 ;
+
+!ro17.d	= !i2 & i4 ;
+
+/* !ro18.d	= !i2 # i3 ; */
+ro18.d	= i2 & !i3 ;
+
+!ro19.d	= !i2 ;
